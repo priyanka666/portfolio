@@ -2,14 +2,14 @@
 
 <!doctype html>
 <html lang="en">
+{% load staticfiles %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Album example for Bootstrap</title>
+    <title>Priyanka Bhavaraju's Blog</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -22,16 +22,16 @@
   <body>
 
     <header>
-     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <a class="navbar-brand" href="#">Priyanka Bhavaraju</a>
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand" href="{% url 'home' %}">Priyanka Bhavaraju</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link active" href="#">Twitter <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Resume</a>
-      <a class="nav-item nav-link" href="#">Blog</a>
+      <a class="nav-item nav-link active" href="https://twitter.com/prinku_666">Twitter <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="{% static 'priyanka_resume_.pdf' %}">Resume</a>
+      <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
     </div>
   </div>
 </nav>
@@ -41,7 +41,7 @@
         <h1 class = "text-center pt-5">Welcome to my blog</h1>
         <div class = "container">
         {% for blogs in blog.all %}
-        <h2><a href="">{{ blogs.title }}</a></h2>
+        <h2><a href="{% url 'detail' blog.id %}">{{ blogs.title }}</a></h2>
         <br/>
         <p>{{ blogs.pub_date_pretty }}</p>
         <p>{{ blogs.summary }}</p>
